@@ -14,19 +14,19 @@ All spatial transcriptomics (10x Visium) used for this study is publicly availab
 
 [2]:https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE224360
 
-1. QC, Normalisatioin and Subset: `120123_Normalisation_subset_merge_paper.Rmd`
-    * Inmput file (assumes path: "")
+1. QC, Normalization and Subset: `120123_Normalisation_subset_merge_paper.Rmd`
+    * Input file (assumes path: "")
     * Reads in the output of the spaceranger pipeline, and returns a Seurat object. 
-    * Removal of conective tissue and joint dimensional reduction to cluster on the underlying RNA expression data.
+    * Removal of connective tissue and joint dimensional reduction to cluster on the underlying RNA expression data.
 
 2. Differential gene expression: `120123_DGE_Table_Paper.Rmd`
-    * Takes merged file as imput and filters for state/cluster to compere.
-    * FindMarkers() function is used to generate .csv files of idents of intrests.
+    * Takes merged file as input and filters for state/cluster to compere.
+    * FindMarkers() function is used to generate .csv files of idents of interests.
 
 
 3. Figures from the paper: `120123_Figure_svg.Rmd`
     * Takes merged file as input 
-    * Uses .xlsx file as imput for figuer xx
+    * Uses .xlsx file as input for figuer xx
 
 Figures: XXX Were created by shiny app
 
