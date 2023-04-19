@@ -1,0 +1,374 @@
+---
+title: "Figures"
+author: "Jonas Alexander Kretz"
+output: html_document
+params:
+
+  # sample_name1: A2_OB_virgin
+  # file_dir1: /home/jonkretz/NAS/Jonas_Kretz/Visium_gene_expression/Visium_mouse_brain/Data/A2_OB_virgin/outs/
+  # 
+  # sample_name2: B2_OB_mother_20
+  # file_dir2: /home/jonkretz/NAS/Jonas_Kretz/Visium_gene_expression/Visium_mouse_brain/Data/B2_OB_mother_20/outs/
+  # 
+  # sample_name3: C2_OB_virgin_30
+  # file_dir3: /home/jonkretz/NAS/Jonas_Kretz/Visium_gene_expression/Visium_mouse_brain/Data/C2_OB_virgin_30/outs/
+  # 
+  # sample_name4: D2_OB_mother_30
+  # file_dir4: /home/jonkretz/NAS/Jonas_Kretz/Visium_gene_expression/Visium_mouse_brain/Data/D2_OB_mother_30/outs/
+  # 
+  # raw_UMI_counts: raw_feature_bc_matrix.h5
+  # filtered_UMI_counts: filtered_feature_bc_matrix.h5
+  # imgs: spatial/tissue_hires_image.png
+  # spotfiles: spatial/tissue_positions_list.csv
+  # json: spatial/scalefactors_json.json
+  # 
+  # processed_file_dir: /media/Jonas_Kretz/Visium_gene_expression/Visium_mouse_brain/Analysis_mouse_brain/Workflow_sct_merge_log/Rmd_and_data/processed_data/
+  # merge.all: 0.5_sct_spat.merge.all_01_23.RData
+  
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r 002, librarys, data loading, message=FALSE,,echo=FALSE}
+
+library(Seurat)
+#library(SeuratData)
+library(ggplot2)
+library(patchwork)
+library(dplyr)
+library(rmarkdown)
+library(ggrepel)
+library(readxl)
+library(viridis)
+library(cowplot)
+# sample_name1 <- params$sample_name1
+# file_dir1 <- params$file_dir1
+# 
+# sample_name2 <- params$sample_name2
+# file_dir2 <- params$file_dir2
+# 
+# sample_name3 <- params$sample_name3
+# file_dir3 <- params$file_dir3
+# 
+# sample_name4 <- params$sample_name4
+# file_dir4 <- params$file_dir4
+# 
+# filtered_UMI_counts <- params$filtered_UMI_counts
+# raw_UMI_counts <- params$raw_UMI_counts
+# imgs <- params$imgs
+# spotfiles <- params$spotfiles
+# json <- params$json
+# 
+# processed_file_dir <- params$processed_file_dir
+# merge.all <- params$merge.all
+
+
+```
+
+
+
+```{r 003, data loading, message=FALSE,echo=FALSE}
+load("/media/Jonas_Kretz/Visium_gene_expression/Visium_mouse_brain/Analysis_mouse_brain/Workflow_sct_merge_log/Rmd_and_data/Reproduce_paper/spat.merge.all_01_23.RData")
+
+```
+
+```{r 004, lognorm,  message=FALSE, echo=FALSE,width = 10,fig.height = 8}
+#Test<-spat.merge.all_01_23
+DefaultAssay(spat.merge.all_01_23) <- "Spatial"
+spat_merge_log_norm <- NormalizeData(spat.merge.all_01_23,assay = "Spatial", verbose = FALSE)
+spat_merge_log_norm<-ScaleData(spat_merge_log_norm)
+###################################################################################
+barcode_df <- FetchData(spat_merge_log_norm, vars = c("ident","orig.ident"))
+barcode_df$barcode <- rownames(barcode_df)
+```
+
+
+# Figure 4
+
+## Figure 4a) umap 
+
+```{r 007,  message=FALSE, echo=FALSE, warning=FALSE,fig.width = 10,fig.height = 8,dev='svg'}
+
+DimPlot(spat.merge.all_01_23, reduction = "umap", group.by = c("ident"),label = TRUE)
+
+
+```
+
+
+
+# Figure S7
+
+## Figure S7B spatial cluster
+
+
+```{r 007,  message=FALSE, echo=FALSE, warning=FALSE,fig.width = 10,fig.height = 8,dev='svg'}
+
+SpatialDimPlot(spat_merge_log_norm, images ="slice1")
+
+SpatialDimPlot(spat_merge_log_norm, images ="slice1_B2")
+
+SpatialDimPlot(spat_merge_log_norm, images ="slice1_C2")
+
+SpatialDimPlot(spat_merge_log_norm,  images ="slice1_D2")
+
+
+```
+
+## Figure S7B Gene counts
+
+```{r 035,  message=FALSE,warning=FALSE,echo=FALSE,fig.width = 25,fig.height = 6, dev='svg'}
+pq1<-SpatialFeaturePlot(spat_merge_log_norm, features = "nFeature_Spatial", images ="slice1")+ theme(legend.position = "right")
+pq2<-SpatialFeaturePlot(spat_merge_log_norm, features = "nFeature_Spatial",  images ="slice1_B2")+ theme(legend.position = "right")
+pq3<-SpatialFeaturePlot(spat_merge_log_norm, features = "nFeature_Spatial",  images ="slice1_C2")+ theme(legend.position = "right")
+pq4<-SpatialFeaturePlot(spat_merge_log_norm, features = "nFeature_Spatial",  images ="slice1_D2")+ theme(legend.position = "right")
+
+wrap_plots(pq1, pq2, pq3, pq4, nrow=1)
+
+```
+
+
+## Figure S7B UMI counts
+
+```{r 038,  message=FALSE,warning=FALSE,echo=FALSE,fig.width = 25,fig.height = 6, dev='svg'}
+pq1<-SpatialFeaturePlot(spat_merge_log_norm, features = "nCount_Spatial", images ="slice1")+ theme(legend.position = "right")
+pq2<-SpatialFeaturePlot(spat_merge_log_norm, features = "nCount_Spatial",  images ="slice1_B2")+ theme(legend.position = "right")
+pq3<-SpatialFeaturePlot(spat_merge_log_norm, features = "nCount_Spatial",  images ="slice1_C2")+ theme(legend.position = "right")
+pq4<-SpatialFeaturePlot(spat_merge_log_norm, features = "nCount_Spatial",  images ="slice1_D2")+ theme(legend.position = "right")
+
+wrap_plots(pq1, pq2, pq3, pq4, nrow=1)
+
+```
+
+
+## Figure S7C Anatomical layers & Fenale states
+
+```{r 008,  message=FALSE, echo=FALSE, warning=FALSE,fig.width = 10,fig.height = 8,dev='svg'}
+
+DimPlot(spat_merge_log_norm, reduction = "umap", group.by = c("ident"),label = TRUE)
+DimPlot(spat_merge_log_norm, reduction = "umap", group.by = c("orig.ident"))
+
+```
+
+
+## Figure S7D Vlnplot Gene count
+
+```{r 036,  message=FALSE,warning=FALSE,echo=FALSE,fig.width = 15,fig.height = 10, dev='svg'}
+VlnPlot(spat_merge_log_norm, features = "nFeature_Spatial", pt.size = 0.1, group.by = "orig.ident") +  geom_boxplot(width=0.1, fill="white")
+
+```
+
+## Figure S7E Vlnplot UMI count
+
+```{r 039,  message=FALSE,warning=FALSE,echo=FALSE,fig.width = 15,fig.height = 10, dev='svg'}
+VlnPlot(spat_merge_log_norm, features = "nCount_Spatial", pt.size = 0.1, group.by = "orig.ident") +  geom_boxplot(width=0.1, fill="white")
+
+```
+
+## Figure S7F Heatmap top10 clustermarker(sct)other log norm
+
+
+```{r 009,  message=FALSE, echo=FALSE, warning=FALSE,fig.width = 15,fig.height = 12,dev='svg'}
+
+DefaultAssay(spat.merge.all_01_23) <- "SCT"
+markers <- FindAllMarkers(spat.merge.all_01_23, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+markers %>%
+    group_by(cluster) %>%
+    top_n(n = 10, wt = avg_log2FC) -> top10
+
+DoHeatmap(spat.merge.all_01_23, features = top10$gene)
+
+
+
+
+markers <- FindAllMarkers(spat_merge_log_norm, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
+markers %>%
+    group_by(cluster) %>%
+    top_n(n = 10, wt = avg_log2FC) -> top10
+
+DoHeatmap(spat_merge_log_norm, features = top10$gene)
+
+
+
+
+```
+
+## Figure S7G 
+
+# S7G) no cutoff ,cutoff from paper and q95
+
+3/Nrgn
+
+```{r 005,  message=FALSE, echo=FALSE,fig.width = 10,fig.height = 6, warning=FALSE, dev='svg'}
+
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Nrgn")
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Nrgn",max.cutoff = 3)
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Nrgn",max.cutoff = 'q95')
+
+```
+
+4/Pcp4
+
+
+```{r 006,  message=FALSE, echo=FALSE,fig.width = 10,fig.height = 6, warning=FALSE, dev='svg'}
+
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Pcp4")
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Pcp4",max.cutoff = 4)
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Pcp4",max.cutoff = 'q95')
+
+```
+
+
+3/Uchl1
+
+```{r 007,  message=FALSE, echo=FALSE,fig.width = 10,fig.height = 6, warning=FALSE, dev='svg'}
+
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Uchl1")
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Uchl1",max.cutoff = 3)
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Uchl1",max.cutoff = 'q95')
+
+```
+
+3/Trh
+
+```{r 008,  message=FALSE, echo=FALSE,fig.width = 10,fig.height = 6, warning=FALSE, dev='svg'}
+
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Trh")
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Trh",max.cutoff = 3)
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Trh",max.cutoff = 'q95')
+
+```
+
+3,2/Doc2g
+
+```{r 009,  message=FALSE, echo=FALSE,fig.width = 10,fig.height = 6, warning=FALSE, dev='svg'}
+
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Doc2g")
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Doc2g",max.cutoff = 3.2)
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Doc2g",max.cutoff = 'q95')
+
+```
+
+2,4/Slc20a1
+
+```{r 010,  message=FALSE, echo=FALSE,fig.width = 10,fig.height = 6, warning=FALSE, dev='svg'}
+
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Slc20a1")
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Slc20a1",max.cutoff = 2.4)
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Slc20a1",max.cutoff = 'q95')
+
+```
+
+2,9/Necab2
+
+```{r 011,  message=FALSE, echo=FALSE,fig.width = 10,fig.height = 6, warning=FALSE, dev='svg'}
+
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Necab2")
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Necab2",max.cutoff = 2.9)
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Necab2",max.cutoff = 'q95')
+
+```
+
+1,8/Doc2b
+
+```{r 012,  message=FALSE, echo=FALSE,fig.width = 10,fig.height = 6, warning=FALSE, dev='svg'}
+
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Doc2b")
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Doc2b",max.cutoff = 1.8)
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Doc2b",max.cutoff = 'q95')
+
+```
+
+
+# Figure S8C
+
+2/Elp3
+
+```{r 013,  message=FALSE, echo=FALSE,fig.width = 10,fig.height = 6, warning=FALSE, dev='svg'}
+
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Elp3")
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Elp3",max.cutoff = 2)
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Elp3",max.cutoff = 'q95')
+
+```
+
+1,3/Nr4a3
+
+```{r 014,  message=FALSE, echo=FALSE,fig.width = 10,fig.height = 6, warning=FALSE, dev='svg'}
+
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Nr4a3")
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Nr4a3",max.cutoff = 1.3)
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Nr4a3",max.cutoff = 'q95')
+
+```
+
+2,5/Klf9
+
+```{r 015,  message=FALSE, echo=FALSE,fig.width = 10,fig.height = 6, warning=FALSE, dev='svg'}
+
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Klf9")
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Klf9",max.cutoff = 2.5)
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Klf9",max.cutoff = 'q95')
+
+
+
+```
+
+2/Egr1
+
+```{r 016,  message=FALSE, echo=FALSE,fig.width = 10,fig.height = 6, warning=FALSE, dev='svg'}
+
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Egr1")
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Egr1",max.cutoff = 2)
+SpatialFeaturePlot(object = spat_merge_log_norm,features ="Egr1",max.cutoff = 'q95')
+
+```
+
+
+# Figure S11A)
+
+```{r 014A,  message=FALSE,warning=FALSE,echo=FALSE,fig.width = 10,fig.height = 10, dev='svg'}
+
+barcode_df <- FetchData(spat_merge_log_norm, vars = c("ident","orig.ident"))
+barcode_df$barcode <- rownames(barcode_df)
+
+A2 <- barcode_df %>%
+    filter(orig.ident == "A2_OB_virgin20")
+A2_summary<-summary(A2,maxsum = 20)
+print(A2_summary)
+
+B2 <- barcode_df %>%
+    filter(orig.ident == "B2_OB_mother20")
+B2_summary<-summary(B2,maxsum = 20)
+print(B2_summary)
+
+
+C2 <- barcode_df %>%
+    filter(orig.ident == "C2_OB_virgin30")
+C2_summary<-summary(C2,maxsum = 20)
+print(C2_summary)
+
+D2 <- barcode_df %>%
+    filter(orig.ident == "D2_OB_mother30")
+D2_summary<-summary(D2,maxsum = 20)
+print(D2_summary)
+
+
+# Proportions_of_cluster <- read_excel("/media/Jonas_Kretz/Visium_gene_expression/Visium_mouse_brain/Analysis_mouse_brain/Workflow_sct_merge_log/Rmd_and_data/Reproduce_paper/Proportions_of_cluster_paper.xlsx")
+
+
+ggplot(Proportions_of_cluster, aes(x = Sample, y = proportion, fill = as.factor(cluster))) +
+  geom_col(position = "fill",col="black")
+
+ggplot(Proportions_of_cluster, aes(x = Sample, y = proportion, fill = as.factor(cluster==4))) +
+  geom_col(position = "fill")
+ggplot(Proportions_of_cluster, aes(x = Sample, y = proportion, fill = as.factor(cluster==9))) +
+  geom_col(position = "fill")
+```
+
+
+
+
+
+
+
