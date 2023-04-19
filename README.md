@@ -72,6 +72,8 @@ loaded via a namespace (and not attached):
 [103] grid_4.1.0           data.table_1.14.4    digest_0.6.30        xtable_1.8-4         tidyr_1.2.1          httpuv_1.6.6        
 [109] munsell_0.5.0 </pre>
 
+Usage of more recent version of certain R packages can lead to difference in results especially `Seurat` and `sctransform`.
+
 ## Citation 
 [SPATIO-TEMPORAL_RECRUITMENT_OF_ADULT_NEURAL_STEM_CELLS_FOR_TRANSIENT_NEUROGENESIS_DURING_PREGNANCY] [1]
 
