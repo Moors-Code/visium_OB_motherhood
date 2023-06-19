@@ -86,12 +86,8 @@ Usage of more recent version of certain R packages can lead to difference in res
 
 # To do:
 
-*change names of flies
+*Control codes if comments are understandable
 
-*Comment better
+*Insert link to paper (l 6 and 78)
 
-*Insert link to paper 
-
-*App
-
-* change name of figure file since not sure which were used and which are produced by app
+*Code for App and sup.11. (might in a sub folder?)
