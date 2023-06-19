@@ -4,8 +4,8 @@
 This repository contains the processing pipeline for 10x Visium from [xxxxxxx] [1] structured into 3 modules Rmarkdown scripts.
 
 [1]:https to paper
-<pre>`120123_Normalisation_subset_merge_paper.Rmd`
-`120123_DGE_Table_Paper.Rmd`
+<pre>`1_Normalisation_subset_merge.Rmd`
+`2_DGE_Table_Paper.Rmd`
 `120123_Figure_svg.Rmd`</pre>
 
 
