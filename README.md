@@ -15,21 +15,19 @@ All spatial transcriptomics (10x Visium) used for this study is publicly availab
 
 [2]:https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE224360
 
-1. QC, Normalization and Subset: `120123_Normalisation_subset_merge_paper.Rmd`
-    * Input file (assumes path: "")
+1. QC, Normalization and Subset: `1_Normalisation_subset_merge.Rmd`
+    * Input files (assumes path to spaceranger output files)
     * Reads in the output of the spaceranger pipeline, and returns a Seurat object. 
-    * Removal of connective tissue and joint dimensional reduction to cluster on the underlying RNA expression data.
+    * Removal of spots located on ensheathing regions and joint dimensional reduction to cluster on the underlying RNA expression data.
 
-2. Differential gene expression: `120123_DGE_Table_Paper.Rmd`
+2. Differential gene expression: `2_DGE_Table_Paper.Rmd`
     * Takes merged file as input and filters for state/cluster to compere.
     * FindMarkers() function is used to generate .csv files of idents of interests.
 
 
 3. Figures from the paper: `120123_Figure_svg.Rmd`
     * Takes merged file as input 
-    * Uses .xlsx file as input for figuer xx
 
-Figures: XXX Were created by shiny app
 
 ## SessionInfo
 
@@ -89,10 +87,10 @@ Usage of more recent version of certain R packages can lead to difference in res
 
 *change names of flies
 
-*Set file directery apropriet/ change save files 
-
 *Comment better
 
 *Insert link to paper 
 
 *App
+
+* change name of figure file since not sure which were used and which are produced by app
