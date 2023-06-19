@@ -6,7 +6,7 @@ This repository contains the processing pipeline for 10x Visium from [xxxxxxx] [
 [1]:https to paper
 <pre>`1_Normalisation_subset_merge.Rmd`
 `2_DGE_Table_Paper.Rmd`
-`120123_Figure_svg.Rmd`</pre>
+`3_Visualisation_svg.Rmd`</pre>
 
 
 ## Data Availability
@@ -25,8 +25,9 @@ All spatial transcriptomics (10x Visium) used for this study is publicly availab
     * FindMarkers() function is used to generate .csv files of idents of interests.
 
 
-3. Figures from the paper: `120123_Figure_svg.Rmd`
-    * Takes merged file as input 
+3. Figures from the paper: `13_Visiualisation_svg.Rmd`
+    * Takes merged file as input.
+    * Visualisation of Figures that were not created by app.
 
 
 ## SessionInfo
