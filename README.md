@@ -25,7 +25,7 @@ All spatial transcriptomics (10x Visium) used for this study is publicly availab
     * FindMarkers() function is used to generate .csv files of idents of interests.
 
 
-3. Figures from the paper: `13_Visiualisation_svg.Rmd`
+3. Figures from the paper: `3_Visiualisation_svg.Rmd`
     * Takes merged file as input.
     * Visualisation of Figures that were not created by app.
 
