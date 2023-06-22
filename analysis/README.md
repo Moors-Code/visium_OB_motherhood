@@ -1,4 +1,4 @@
-# PREGNANCY-RESPONSIVE POOLS OF ADULT NEURAL STEM CELLS FOR TRANSIENT NEUROGENESIS IN MOTHERS
+# Analysis of OB visium
 
 
 This folder contains the processing pipeline for 10x Visium from [xxxxxxx] [1] structured into 3 modules Rmarkdown scripts.
