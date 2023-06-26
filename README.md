@@ -10,9 +10,10 @@ Consisting of 3 folders (`analysis`,`app` and `sensitivity`).
 
 ## Data Availability
 
-The spatial transcriptomics data (10x Visium) used for this study is publicly available on GEO under the accession token  [GSE224360][2].
+The spatial transcriptomics data (10x Visium) used for this study is publicly available on GEO under the accession token  [GSE224360][2]. Processed data used for the app and sensitivity analysis are accessable on [Zenodo][3].
 
 [2]:https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE224360
+[3]:https://zenodo.org/record/8002261
 
 1. `analysis`
 * Codes for the analysis.
