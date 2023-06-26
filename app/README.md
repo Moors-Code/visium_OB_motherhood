@@ -2,13 +2,19 @@
 
 
 
-<pre>`create_spe_from_seurat.R`</pre>
+`create_spe_from_seurat.R`
 
 
 ## Code description
 
 1. `create_spe_from_seurat.R`
-   
+* Uses [shiny](https://shiny.rstudio.com/) web application,
+* Uses Bioconductor package at
+    [bioconductor.org/packages/spatialLIBD](http://bioconductor.org/packages/spatialLIBD)
+    (or from [here](http://research.libd.org/spatialLIBD/))
+* Uses `spe.rds` form accessable via [Zenodo][1] as input.
+ 
+[1]:https://zenodo.org/record/8002261
 
 ## SessionInfo
 
