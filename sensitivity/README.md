@@ -2,7 +2,7 @@
 
 
 
-<pre>`sensitivity_check.R`</pre>
+`sensitivity_check.R`
 
 
 ## Code description
