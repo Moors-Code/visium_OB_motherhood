@@ -12,7 +12,7 @@ Consisting of 3 folders.
 
 ## Data Availability
 
-All spatial transcriptomics (10x Visium) used for this study is publicly available on GEO under the accession token  [GSE224360][2].
+The spatial transcriptomics data (10x Visium) used for this study is publicly available on GEO under the accession token  [GSE224360][2].
 
 [2]:https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE224360
 
