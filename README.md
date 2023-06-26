@@ -2,12 +2,10 @@
 
 
 This repository contains the processing pipeline for 10x Visium from [xxxxxxx] [1] 
-Consisting of 3 folders.
+Consisting of 3 folders (`analysis`,`app` and `sensitivity`).
 
 [1]:https to paper
-<pre>`analysis`
-`app`
-`sensitivity`</pre>
+
 
 
 ## Data Availability
@@ -17,8 +15,11 @@ The spatial transcriptomics data (10x Visium) used for this study is publicly av
 [2]:https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE224360
 
 1. `analysis`
+* Codes for the analysis.
 2. `app`
-3. `sensitivity`
+* App to interactively explore the data and visualize gene expression. 
+4. `sensitivity`
+* To address potential effects of tissue folds.
     
 ## Citation 
 [SPATIO-TEMPORAL_RECRUITMENT_OF_ADULT_NEURAL_STEM_CELLS_FOR_TRANSIENT_NEUROGENESIS_DURING_PREGNANCY] [1]
