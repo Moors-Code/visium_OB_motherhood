@@ -1,6 +1,6 @@
 # Visualisation App
 
-
+This section contains the code for running an interactive local shiny app to explore the results.
 
 `create_spe_from_seurat.R`
 
