@@ -34,8 +34,4 @@ The spatial transcriptomics data (10x Visium) used for this study is publicly av
 
 # To do:
 
-*Control codes if comments are understandable
-
 *Insert link to paper
-
-*add description of folders
