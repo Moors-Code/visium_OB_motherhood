@@ -34,7 +34,7 @@ load("spat_merge_all.RData")
 
 # Figure 3
 
-## Figure 3b) umap 
+## Figure 3B umap 
 
 ```{r 004,  message=FALSE, echo=FALSE, warning=FALSE,fig.width = 10,fig.height = 8,dev='svg'}
 
@@ -140,7 +140,7 @@ wrap_plots(cluster91011A2, cluster91011B2, cluster91011C2, cluster91011D2, nrow=
 ```
 
 
-## Figure S7D&E Anatomical layers & Fenale states
+## Figure S7D&E Anatomical layers & Female states
 
 ```{r 009,  message=FALSE, echo=FALSE, warning=FALSE,fig.width = 10,fig.height = 8,dev='svg'}
 
