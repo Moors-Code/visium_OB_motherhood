@@ -8,7 +8,7 @@
 ## Code description
 
 1. `create_spe_from_seurat.R`
-* Uses [shiny](https://shiny.rstudio.com/) web application,
+* Uses [shiny](https://shiny.rstudio.com/) application (needs to run locally),
 * Uses Bioconductor package at
     [bioconductor.org/packages/spatialLIBD](http://bioconductor.org/packages/spatialLIBD)
     (or from [here](http://research.libd.org/spatialLIBD/))
