@@ -9,7 +9,9 @@ This section contains the code for the sensitivity analysis that was performed i
 
 1. `sensitivity_check.R`
    
-   In this code, we have taken the final object coming from the [main analysis](https://github.com/Moors-Code/visium_OB_motherhood/tree/main/analysis) and excluded the spots that belonged to the folded regions (which was done manually via [STUtility](https://ludvigla.github.io/STUtility_web_site/index.html) package). Clustering was done once again after a quality control filtering and each cluster was visualized on the Visium slide to compare with the main analysis. Further, cluster marker genes were determined to identify the similarities with the main analysis, which allowed us to see the extent of the effect the folded region had in the main analysis.
+   * Uses the final object the [main analysis](https://github.com/Moors-Code/visium_OB_motherhood/tree/main/analysis).
+   * Excluded spots were manually selected using [STUtility](https://ludvigla.github.io/STUtility_web_site/index.html) package.
+   * Performs clustering, visualization and cluster marker discovery.
 
 ## SessionInfo
 
