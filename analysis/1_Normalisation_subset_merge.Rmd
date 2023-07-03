@@ -201,8 +201,6 @@ p16 <- ggplot() +
 ```
 
 ## % of mitochondrial genes and ribosmoal protein
-Intresting spatial distribution of lower % of mt genes they are focused in the GCL layer.
-(Could be an artefact of the tissue, since it was not embedded in o.c.t, while cutting forms confex structure)
 
 
 ```{r 006, data loading, message=FALSE,}
