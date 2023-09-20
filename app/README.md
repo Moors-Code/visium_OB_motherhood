@@ -8,11 +8,19 @@ This section contains the code for running an interactive local shiny app to exp
 ## Code description
 
 1. `create_spe_from_seurat.R`
+* Uses Seurat and SpatialExperiment packages,
+* Converts spatial Seurat object into a SpatialExperiment object.
+
+2. `app_only.R`
 * Uses [shiny](https://shiny.rstudio.com/) application (needs to run locally),
 * Uses Bioconductor package at
     [bioconductor.org/packages/spatialLIBD](http://bioconductor.org/packages/spatialLIBD)
     (or from [here](http://research.libd.org/spatialLIBD/))
 * Uses `spe.rds` form accessable via [Zenodo][1] as input.
+
+3. `www.zip`
+* Manual documentation file for the spatialLIBD app.
+* Can be either obtained from spatialLIBD package, or `www.zip` can be decompressed to the path for the app. 
  
 [1]:https://zenodo.org/record/8002261
 
