@@ -1,4 +1,6 @@
 #BiocManager version 3.16
+#SpatialLIBD version 1.13.6
+#R 4.2.2
 
 # if (!require("BiocManager", quietly = TRUE))
 #   install.packages("BiocManager")
@@ -29,6 +31,7 @@ vars <- colnames(colData(spe_wrapper))
 run_app(
   spe_wrapper,
   sce_layer = NULL,
+  auto_crop_default = FALSE,
   modeling_results = NULL,
   sig_genes = NULL,
   title = "spatialLIBD: Mouse brain results",
