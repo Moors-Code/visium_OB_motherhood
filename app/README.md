@@ -2,8 +2,8 @@
 
 This section contains the code for running an interactive local shiny app to explore the results.
 
-`create_spe_from_seurat.R`
-
+`app_only.R` has been tested in R version 4.2.2 and spatialLIBD 1.13.6 as well. In the later versions of spatialLIBD, 
+`auto_crop_default` should be set to `FALSE` to avoid any errors. 
 
 ## Code description
 
