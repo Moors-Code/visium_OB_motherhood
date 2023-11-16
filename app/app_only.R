@@ -7,7 +7,8 @@
 # 
 # BiocManager::install("spatialLIBD")
 
-setwd("~/Desktop/jonas_collab/")
+#set the working directory to the folder where "sensitivity_spe.RDS" is stored.
+setwd("")
 
 # We load the libraries
 library("spatialLIBD")
