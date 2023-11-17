@@ -18,7 +18,11 @@ The spatial transcriptomics data (10x Visium) used for this study is publicly av
 1. `analysis`
 * Codes for the analysis.
 2. `app`
-* App to interactively explore the data and visualize gene expression. 
+* App to interactively explore the data and visualize gene expression.
+* Additionally, the app is available on a web server and can be accessed by following these links:  
+  https://moorscode.shinyapps.io/visium_mouse_brain/  
+  https://moorscode.shinyapps.io/visium_mouse_brain_sensitivity/  
+  Please note that web server has limited resources.
 4. `sensitivity`
 * To address potential effects of tissue folds.
     
