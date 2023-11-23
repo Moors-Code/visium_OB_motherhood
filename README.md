@@ -1,10 +1,10 @@
 # PREGNANCY-RESPONSIVE POOLS OF ADULT NEURAL STEM CELLS FOR TRANSIENT NEUROGENESIS IN MOTHERS
 
 
-This repository contains the processing pipeline for 10x Visium from [1] 
+This repository contains the processing pipeline for 10x Visium data from [Pregnancy-responsive pools of adult neural stem cells for transient neurogenesis in mothers][1] 
 Consisting of 3 folders (`analysis`,`app` and `sensitivity`).
 
-[1]:https to paper
+[1]:https://www.science.org/doi/10.1126/science.abo5199
 
 
 
@@ -27,4 +27,4 @@ The spatial transcriptomics data (10x Visium) used for this study is publicly av
 * To address potential effects of tissue folds.
     
 ## Citation 
-[SPATIO-TEMPORAL_RECRUITMENT_OF_ADULT_NEURAL_STEM_CELLS_FOR_TRANSIENT_NEUROGENESIS_DURING_PREGNANCY] [1]
+Zayna Chaker et al. ,Pregnancy-responsive pools of adult neural stem cells for transient neurogenesis in mothers.Science382,958-963(2023).[DOI:10.1126/science.abo5199][1]
