@@ -23,7 +23,7 @@ The spatial transcriptomics data (10x Visium) used for this study is publicly av
   https://moorscode.shinyapps.io/visium_mouse_brain/  
   https://moorscode.shinyapps.io/visium_mouse_brain_sensitivity/  
   Please note that web server has limited resources.
-4. `sensitivity`
+3. `sensitivity`
 * To address potential effects of tissue folds.
     
 ## Citation 
